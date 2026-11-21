@@ -14,10 +14,9 @@ async function loadMochiPicRelease() {
 
   const releaseBase = 'https://github.com/luzhenhua/mochipic/releases';
   const installPackages = {};
+  const prefix = `MochiPic-${tag.slice(1)}-arm64-`;
   for (const { name, browser_download_url: url } of assets) {
-    if (typeof name !== 'string') continue;
-    const prefix = `MochiPic-${tag.slice(1)}-arm64-`;
-    if (!name.startsWith(prefix) || !name.endsWith('.dmg')) continue;
+    if (typeof name !== 'string' || !name.startsWith(prefix) || !name.endsWith('.dmg')) continue;
     const language = name.slice(prefix.length, -4);
     if (!/^[a-z]{2}(?:-[A-Za-z]{2,4})?$/.test(language)) continue;
     if (url === `${releaseBase}/download/${tag}/${name}`) installPackages[language] = url;
@@ -26,8 +25,7 @@ async function loadMochiPicRelease() {
   return { tag, url: `${releaseBase}/tag/${tag}`, installPackages };
 }
 
-// The repository ships the landing page as a bundled HTML export. Keep the
-// release integration readable here and fail if the export's wiring changes.
+// Apply the release integration to the bundled HTML export at build time.
 const entry = new URL('../website/index.html', import.meta.url);
 let html = await readFile(entry, 'utf8');
 function replaceOnce(original, updated) {
@@ -41,7 +39,7 @@ function replaceOnce(original, updated) {
 replaceOnce('<script>"use strict";', `<script>${loadMochiPicRelease.toString()}</script><script>"use strict";`);
 replaceOnce('zS=`${tg}/releases/tag/v0.0.14`', 'zS=`${tg}/releases/latest`');
 replaceOnce('function fT({lang:e,setLang:a,url:t})', 'function fT({lang:e,setLang:a,url:t,directDownload})');
-replaceOnce(String.raw`children:"\u4E0B\u8F7D"})]})})})}function dT`, String.raw`children:directDownload?"\u4E0B\u8F7D":"查看发布"})]})})})}function dT`);
+replaceOnce(String.raw`icon:(0,M.jsx)(si,{size:14}),children:"\u4E0B\u8F7D"`, String.raw`icon:(0,M.jsx)(si,{size:14}),children:directDownload?"\u4E0B\u8F7D":"查看发布"`);
 replaceOnce('function dT({url:e})', 'function dT({url:e,release,directDownload})');
 replaceOnce(String.raw`className:"version",href:zS,children:[(0,M.jsx)("span",{children:"v0.0.14"})," \u73B0\u5DF2\u53D1\u5E03 ",`, 'className:"version",href:release?.url??zS,children:[(0,M.jsx)("span",{children:release?`${release.tag} 现已发布`:"查看最新发布"})," ",');
 replaceOnce(String.raw`children:"\u4E0B\u8F7D Mac \u7248"`, String.raw`children:directDownload?"\u4E0B\u8F7D Mac \u7248":"前往 GitHub 下载"`);
