@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "buildCommand": "node scripts/build-website.mjs",
+  "buildCommand": "if [ -f scripts/build-website.mjs ]; then node scripts/build-website.mjs; else node ../scripts/build-website.mjs; fi",
   "installCommand": "",
   "outputDirectory": "website"
 }
