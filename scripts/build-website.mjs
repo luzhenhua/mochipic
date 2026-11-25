@@ -15,14 +15,20 @@ async function loadMochiPicRelease() {
   const releaseBase = 'https://github.com/luzhenhua/mochipic/releases';
   const installPackages = {};
   const prefix = `MochiPic-${tag.slice(1)}-arm64-`;
+  const windowsName = `MochiPic-${tag.slice(1)}-windows-x64-setup.exe`;
+  let windowsInstaller;
   for (const { name, browser_download_url: url } of assets) {
+    if (name === windowsName && url === `${releaseBase}/download/${tag}/${windowsName}`) {
+      windowsInstaller = url;
+      continue;
+    }
     if (typeof name !== 'string' || !name.startsWith(prefix) || !name.endsWith('.dmg')) continue;
     const language = name.slice(prefix.length, -4);
     if (!/^[a-z]{2}(?:-[A-Za-z]{2,4})?$/.test(language)) continue;
     if (url === `${releaseBase}/download/${tag}/${name}`) installPackages[language] = url;
   }
 
-  return { tag, url: `${releaseBase}/tag/${tag}`, installPackages };
+  return { tag, url: `${releaseBase}/tag/${tag}`, installPackages, windowsInstaller };
 }
 
 // Apply the release integration to the bundled HTML export at build time.
@@ -37,21 +43,32 @@ function replaceOnce(original, updated) {
 }
 
 replaceOnce('<script>"use strict";', `<script>${loadMochiPicRelease.toString()}</script><script>"use strict";`);
+replaceOnce('</style>', `#download{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:14px;scroll-margin-top:76px}.download-option{display:flex;flex-direction:column;align-items:center;gap:8px}.intro .download-option small{margin:0}.download-option a{white-space:nowrap}@media(max-width:420px){#download{gap:12px}.download-option{min-width:150px}}</style>`);
 replaceOnce('zS=`${tg}/releases/tag/v0.0.14`', 'zS=`${tg}/releases/latest`');
-replaceOnce('function fT({lang:e,setLang:a,url:t})', 'function fT({lang:e,setLang:a,url:t,directDownload})');
-replaceOnce(String.raw`icon:(0,M.jsx)(si,{size:14}),children:"\u4E0B\u8F7D"`, String.raw`icon:(0,M.jsx)(si,{size:14}),children:directDownload?"\u4E0B\u8F7D":"查看发布"`);
-replaceOnce('function dT({url:e})', 'function dT({url:e,release,directDownload})');
+replaceOnce('function dT({url:e})', 'function dT({macURL,windowsURL,release,releaseUrl})');
 replaceOnce(String.raw`className:"version",href:zS,children:[(0,M.jsx)("span",{children:"v0.0.14"})," \u73B0\u5DF2\u53D1\u5E03 ",`, 'className:"version",href:release?.url??zS,children:[(0,M.jsx)("span",{children:release?`${release.tag} 现已发布`:"查看最新发布"})," ",');
-replaceOnce(String.raw`children:"\u4E0B\u8F7D Mac \u7248"`, String.raw`children:directDownload?"\u4E0B\u8F7D Mac \u7248":"前往 GitHub 下载"`);
+replaceOnce(
+  String.raw`\u5728 Mac \u4E0A\u6279\u91CF\u88C1\u526A\u3001\u52A0\u6C34\u5370\u3001\u8F6C\u683C\u5F0F\u3002`,
+  '在电脑上批量裁剪、加水印、转格式。',
+);
+replaceOnce(
+  String.raw`(0,M.jsx)("div",{className:"cta",children:(0,M.jsx)(ou,{type:"primary",size:"large",href:e,icon:(0,M.jsx)(si,{size:17}),children:"\u4E0B\u8F7D Mac \u7248"})}),(0,M.jsxs)("small",{children:["macOS 13 \u6216\u66F4\u9AD8\u7248\u672C ",(0,M.jsx)("i",{children:"\xB7"})," Apple Silicon"]})`,
+  '(0,M.jsx)("div",{className:"cta",id:"download",children:[' +
+    '[macURL,"下载 Mac 版","查看最新发布","macOS 13+ · Apple Silicon"],' +
+    '...(windowsURL?[[windowsURL,"下载 Windows 版","","Windows 10 / 11 · x64"]]:[])' +
+    '].map(([url,label,fallback,requirements])=>(0,M.jsxs)("div",{className:"download-option",children:[' +
+    '(0,M.jsx)(ou,{type:"primary",size:"large",href:url??releaseUrl,icon:(0,M.jsx)(si,{size:17}),children:url?label:fallback}),' +
+    '(0,M.jsx)("small",{children:requirements})]},label))})',
+);
 replaceOnce('function mT(){', 'function mT({releaseUrl}){');
 replaceOnce('href:zS,children:["GitHub Releases "', 'href:releaseUrl,children:["GitHub Releases "');
 replaceOnce(
   't=`${tg}/releases/download/v0.0.14/MochiPic-0.0.14-arm64-${e}.dmg`;return',
-  '[release,setRelease]=(0,Po.useState)(null),releaseUrl=release?.url??zS,downloadUrl=release?.installPackages[e],t=downloadUrl??releaseUrl;' +
+  '[release,setRelease]=(0,Po.useState)(null),releaseUrl=release?.url??zS,macURL=release?.installPackages[e],windowsURL=release?.windowsInstaller;' +
     '(0,Po.useEffect)(()=>{let active=true;loadMochiPicRelease().then(value=>{if(active)setRelease(value)}).catch(()=>{});return()=>{active=false}},[]);return',
 );
-replaceOnce('fT,{lang:e,setLang:a,url:t}', 'fT,{lang:e,setLang:a,url:t,directDownload:!!downloadUrl}');
-replaceOnce('dT,{url:t}', 'dT,{url:t,release,directDownload:!!downloadUrl}');
+replaceOnce('fT,{lang:e,setLang:a,url:t}', 'fT,{lang:e,setLang:a,url:"#download"}');
+replaceOnce('dT,{url:t}', 'dT,{macURL,windowsURL,release,releaseUrl}');
 replaceOnce('mT,{}', 'mT,{releaseUrl}');
 
 await writeFile(entry, html);
