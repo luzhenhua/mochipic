@@ -1,0 +1,10 @@
+/.deps
+/dist/
+/.scratch/
+/.vercel/
+.DS_Store
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.key

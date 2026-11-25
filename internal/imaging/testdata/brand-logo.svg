@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="616" height="176" viewBox="0 0 154 44" color="#20252b">
+  <path d="M22 2 41 12v20L22 42 3 32V12Z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M12.5 29.5v-15l9.5 9 9.5-9v15" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <g fill="currentColor" font-family="Helvetica Neue,Arial,sans-serif" font-weight="bold">
+    <text x="51" y="22" font-size="24" letter-spacing="1.4">MOCHI</text>
+    <text x="52" y="36" font-size="10.8" letter-spacing="2">INDUSTRIAL</text>
+  </g>
+</svg>

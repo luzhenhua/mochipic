@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="176" viewBox="0 0 150 44" color="#20252b">
+  <g fill="currentColor" font-family="Helvetica Neue,Arial,sans-serif" font-weight="bold">
+    <path d="M2 36 18.5 7h7L42 36h-7.8l-12.2-21-12.2 21Z M18 29h8l4 7H14Z"/>
+    <text x="51" y="23" font-size="24" letter-spacing="2.5">AXIS</text>
+    <text x="52" y="37" font-size="10.8" letter-spacing="1.75">DISTRIBUTION</text>
+  </g>
+</svg>

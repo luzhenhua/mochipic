@@ -1,12 +1,59 @@
-# 麻薯图图 · MochiPic
+<p align="center">
+  <a href="docs/assets/workspace-crop.webp">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="docs/assets/mochipic-cover-dark.webp">
+      <img src="docs/assets/mochipic-cover.webp" width="840" alt="MochiPic · Crop the first photo to 4:3 with the whole batch visible in the thumbnail strip">
+    </picture>
+  </a>
+</p>
 
-麻薯图图是 macOS 和 Windows 的本地图片批处理工具，支持裁剪、缩放、水印、拼图及格式转换。图片只在本机处理。
+<h1 align="center">Fine-tune each photo. Export the whole batch.</h1>
 
-| 系统 | 试用安装包 |
-| --- | --- |
-| macOS 13 或更新版本 · Apple Silicon | [下载简体中文 DMG](https://github.com/luzhenhua/mochipic/releases/download/v0.0.26/MochiPic-0.0.26-arm64-zh-Hans.dmg) |
-| Windows 10 / 11 · x64 | [下载安装程序](https://github.com/luzhenhua/mochipic/releases/download/v0.0.26/MochiPic-0.0.26-windows-x64-setup.exe) |
+<p align="center">A native batch image editor for macOS and Windows. Your images stay on your device.</p>
 
-其他安装包语言、Windows 便携版和当前版本请见[最新发布](https://github.com/luzhenhua/mochipic/releases/latest)或[官网下载页](https://mochipic.zhenhua.lu/#download)。已安装的用户可在「设置 → 关于」检查更新。
+<p align="center">
+  <a href="https://github.com/luzhenhua/mochipic/releases/download/v0.0.26/MochiPic-0.0.26-arm64-en.dmg"><img src="docs/assets/download-macos.webp" width="144" height="42" alt="Download for macOS"></a>
+  &nbsp;
+  <a href="https://github.com/luzhenhua/mochipic/releases/download/v0.0.26/MochiPic-0.0.26-windows-x64-setup.exe"><img src="docs/assets/download-windows.webp" width="144" height="42" alt="Download for Windows"></a>
+  <br>
+  <sub>macOS 13+ · Apple Silicon &nbsp; / &nbsp; Windows 10/11 · x64</sub>
+</p>
 
-This repository hosts the preview downloads and update feed. Each release includes the third-party source archive and license notices for the applicable bundled components.
+<p align="center">
+  <strong>English</strong> · <a href="docs/readme/zh-Hans.md">简体中文</a> · <a href="docs/readme/ja.md">日本語</a> · <a href="docs/readme/es.md">Español</a> · <a href="docs/readme/fr.md">Français</a> · <a href="docs/readme/pt-BR.md">Português (Brasil)</a>
+  <br>
+  <sub><a href="https://mochipic.zhenhua.lu/">Website</a> · <a href="https://github.com/luzhenhua/mochipic/releases/latest">All downloads</a> · <a href="docs/USAGE.md">User guide (简体中文)</a></sub>
+</p>
+
+## What you can do
+
+### Edit the photos you select
+
+Crop and resize a single photo, make a collage, or apply a watermark to several photos at once. Each photo keeps its own settings.
+
+[![Watermark a selection](docs/assets/mochipic-watermark.webp)](docs/assets/workspace-watermark.webp)
+
+### Export the whole batch
+
+Convert formats, rename files, and export in one pass. Your originals stay intact.
+
+[![Convert the batch to WebP](docs/assets/mochipic-webp.webp)](docs/assets/workspace-export.webp)
+
+## Development and contributions
+
+Built with Go, MyGo, Lobe MyGo, and libvips. Run the development build on an Apple Silicon Mac with the following commands.
+
+```sh
+scripts/setup-native.sh
+scripts/go.sh run ./cmd/imageflow
+```
+
+[macOS and Windows build guide (简体中文)](docs/DEVELOPMENT.md) · [Architecture (简体中文)](docs/ARCHITECTURE.md)
+
+[Issues](https://github.com/luzhenhua/mochipic/issues) · [Contribution guide](CONTRIBUTING.md)
+
+## Credits
+
+Designed and developed by [Zhenhua Lu](https://zhenhua.lu). Thanks to Lobe UI, Lobe MyGo, MyGo, and the open-source projects behind MochiPic.
+
+[Third-party notices](docs/THIRD_PARTY.md)

@@ -1,0 +1,18 @@
+[
+  {"format":"JPG",  "extensions":["jpg","jpeg","jpe","jfif"], "types":["public.jpeg"], "output":".jpg"},
+  {"format":"PNG",  "extensions":["png","apng"],             "types":["public.png"], "output":".png"},
+  {"format":"WebP", "extensions":["webp"],                   "types":["org.webmproject.webp"], "output":".webp"},
+  {"format":"AVIF", "extensions":["avif","avis"],             "types":["public.avif","public.avis"], "output":".avif"},
+  {"format":"HEIF", "extensions":["heic","heif","hif","heics"], "types":["public.heic","public.heif","public.heics"]},
+  {"format":"TIFF", "extensions":["tif","tiff"],              "types":["public.tiff"]},
+  {"format":"BMP",  "extensions":["bmp"],                    "types":["com.microsoft.bmp"]},
+  {"format":"ICO",  "extensions":["ico"],                    "types":["com.microsoft.ico"]},
+  {"format":"GIF",  "extensions":["gif"],                    "types":["com.compuserve.gif"]},
+  {"format":"JPEG XL", "extensions":["jxl"],                  "types":["public.jpeg-xl"]},
+  {"format":"JPEG 2000", "extensions":["jp2","j2k","j2c","jpc"], "types":["public.jpeg-2000"]},
+  {"format":"SVG",  "extensions":["svg"],                    "types":["public.svg-image"]},
+  {"format":"PSD",  "extensions":["psd"],                    "types":["com.adobe.photoshop-image"]},
+  {"format":"RAW",  "extensions":["dng","cr2","cr3","nef","arw","raf","rw2","orf","pef"],
+   "types":["com.adobe.raw-image","com.canon.cr2-raw-image","com.canon.cr3-raw-image","com.nikon.raw-image",
+            "com.sony.arw-raw-image","com.fuji.raw-image","com.panasonic.rw2-raw-image","com.olympus.or-raw-image","com.pentax.raw-image"]}
+]
