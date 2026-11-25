@@ -43,7 +43,13 @@ function replaceOnce(original, updated) {
 }
 
 replaceOnce('<script>"use strict";', `<script>${loadMochiPicRelease.toString()}</script><script>"use strict";`);
-replaceOnce('</style>', `#download{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:14px;scroll-margin-top:76px}.download-option{display:flex;flex-direction:column;align-items:center;gap:8px}.intro .download-option small{margin:0}.download-option a{white-space:nowrap}@media(max-width:420px){#download{gap:12px}.download-option{min-width:150px}}</style>`);
+replaceOnce('</style>', `
+#download{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:14px;scroll-margin-top:76px}
+.download-option{display:flex;flex-direction:column;align-items:center;gap:8px}
+.intro .download-option small{margin:0}
+#download .download-option a{color:var(--lobe-color-bg-layout,#fff);white-space:nowrap}
+@media(max-width:420px){#download{gap:12px}.download-option{min-width:150px}}
+</style>`);
 replaceOnce('zS=`${tg}/releases/tag/v0.0.14`', 'zS=`${tg}/releases/latest`');
 replaceOnce('function dT({url:e})', 'function dT({macURL,windowsURL,release,releaseUrl})');
 replaceOnce(String.raw`className:"version",href:zS,children:[(0,M.jsx)("span",{children:"v0.0.14"})," \u73B0\u5DF2\u53D1\u5E03 ",`, 'className:"version",href:release?.url??zS,children:[(0,M.jsx)("span",{children:release?`${release.tag} 现已发布`:"查看最新发布"})," ",');
