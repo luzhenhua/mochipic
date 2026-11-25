@@ -52,6 +52,12 @@ scripts/go.sh run ./cmd/imageflow
 
 [Relatar um problema](https://github.com/luzhenhua/mochipic/issues) · [Guia de contribuição](../../CONTRIBUTING.md)
 
+## Licença
+
+O MochiPic é gratuito para uso pessoal não comercial. O uso comercial ou por uma organização, inclusive em atividades internas, exige autorização por escrito.
+
+[Licença de uso pessoal](../../LICENSE.md) · [Contato para licenciamento comercial](https://zhenhua.lu/)
+
 ## Créditos
 
 Design e desenvolvimento por [Zhenhua Lu](https://zhenhua.lu). Agradecemos ao Lobe UI, ao Lobe MyGo, ao MyGo e aos projetos de código aberto que dão suporte ao MochiPic.

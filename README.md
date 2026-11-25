@@ -52,6 +52,12 @@ scripts/go.sh run ./cmd/imageflow
 
 [Issues](https://github.com/luzhenhua/mochipic/issues) · [Contribution guide](CONTRIBUTING.md)
 
+## License
+
+MochiPic is free for personal, noncommercial use. Business and organizational use, including internal work, requires written authorization.
+
+[Personal Use License](LICENSE.md) · [Contact for commercial licensing](https://zhenhua.lu/)
+
 ## Credits
 
 Designed and developed by [Zhenhua Lu](https://zhenhua.lu). Thanks to Lobe UI, Lobe MyGo, MyGo, and the open-source projects behind MochiPic.

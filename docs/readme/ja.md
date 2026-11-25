@@ -52,6 +52,12 @@ scripts/go.sh run ./cmd/imageflow
 
 [Issue を作成](https://github.com/luzhenhua/mochipic/issues) · [コントリビューションガイド](../../CONTRIBUTING.md)
 
+## ライセンス
+
+MochiPic は個人の非商用利用に限り無料です。企業や団体での利用（社内業務を含む）および個人での商用利用には、書面による許可が必要です。
+
+[個人利用ライセンス](../../LICENSE.md) · [商用ライセンスのお問い合わせ](https://zhenhua.lu/)
+
 ## クレジット
 
 設計・開発は [Zhenhua Lu](https://zhenhua.lu)。 Lobe UI、Lobe MyGo、MyGo をはじめ、MochiPic を支えるオープンソースプロジェクトに感謝します。

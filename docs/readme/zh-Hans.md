@@ -52,6 +52,12 @@ scripts/go.sh run ./cmd/imageflow
 
 [提交问题](https://github.com/luzhenhua/mochipic/issues) · [贡献指南](../../CONTRIBUTING.md)
 
+## 使用许可
+
+麻薯图图供个人非商业用途免费使用。公司或其他组织使用，以及个人用于经营活动，须取得书面授权。公司内部使用也需要授权。
+
+[个人使用许可](../../LICENSE.md) · [联系获取商业授权](https://zhenhua.lu/)
+
 ## 鸣谢
 
 麻薯图图由[卢振华](https://zhenhua.lu)开发设计。 感谢 Lobe UI、Lobe MyGo、MyGo，以及其他为麻薯图图提供支持的开源项目。
